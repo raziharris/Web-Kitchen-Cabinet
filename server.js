@@ -119,7 +119,7 @@ function orderHtml(order) {
 </html>`;
 }
 
-const server = http.createServer((request, response) => {
+function handleRequest(request, response) {
   if (request.url?.startsWith("/api/order-pdf")) {
     if (request.method !== "POST") {
       response.writeHead(405, { "Content-Type": "application/json; charset=utf-8" });
@@ -238,8 +238,13 @@ const server = http.createServer((request, response) => {
     });
     response.end(content);
   });
-});
+}
 
-server.listen(port, () => {
-  console.log(`Cabinet Booking Studio is running at http://localhost:${port}`);
-});
+if (require.main === module) {
+  const server = http.createServer(handleRequest);
+  server.listen(port, () => {
+    console.log(`Cabinet Booking Studio is running at http://localhost:${port}`);
+  });
+}
+
+module.exports = handleRequest;

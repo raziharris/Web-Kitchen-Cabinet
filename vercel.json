@@ -1,5 +1,7 @@
 {
+  "buildCommand": "npm run build",
   "cleanUrls": true,
+  "outputDirectory": "dist",
   "rewrites": [
     {
       "source": "/model-start/:path*",

@@ -1,3 +1,6 @@
 orders/
+dist/
 .nodemon-restart
 node_modules/
+
+.vercel

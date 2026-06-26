@@ -1,6 +1,11 @@
 {
   "buildCommand": "npm run build",
   "cleanUrls": true,
+  "functions": {
+    "server.js": {
+      "includeFiles": "dist/**"
+    }
+  },
   "outputDirectory": "dist",
   "rewrites": [
     {

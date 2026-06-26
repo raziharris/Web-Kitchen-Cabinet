@@ -5,6 +5,9 @@ const { execFile } = require("child_process");
 
 const port = Number(process.env.PORT || 5173);
 const root = __dirname;
+const staticRoot = fs.existsSync(path.join(root, "dist", "index.html"))
+  ? path.join(root, "dist")
+  : root;
 
 const contentTypes = {
   ".html": "text/html; charset=utf-8",
@@ -217,9 +220,9 @@ function handleRequest(request, response) {
         : samplePages.has(pathname)
           ? "/sample.html"
           : pathname;
-  const filePath = path.normalize(path.join(root, requestPath));
+  const filePath = path.normalize(path.join(staticRoot, requestPath));
 
-  if (!filePath.startsWith(root)) {
+  if (!filePath.startsWith(staticRoot)) {
     response.writeHead(403);
     response.end("Forbidden");
     return;

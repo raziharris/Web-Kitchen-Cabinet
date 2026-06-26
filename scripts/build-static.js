@@ -10,7 +10,7 @@ const entries = [
   "configure.html",
   "sample.html",
   "styles.css",
-  "app.js",
+  "home.js",
   "product.js",
   "configure.js",
   "sample.js",
@@ -31,4 +31,3 @@ for (const entry of entries) {
 
   fs.cpSync(source, target, { recursive: true });
 }
-

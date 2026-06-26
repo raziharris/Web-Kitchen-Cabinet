@@ -1,0 +1,29 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/model-start/:path*",
+      "destination": "/product.html"
+    },
+    {
+      "source": "/configure/:path*",
+      "destination": "/configure.html"
+    },
+    {
+      "source": "/inspiration",
+      "destination": "/sample.html"
+    },
+    {
+      "source": "/materials",
+      "destination": "/sample.html"
+    },
+    {
+      "source": "/about-us",
+      "destination": "/sample.html"
+    },
+    {
+      "source": "/resources",
+      "destination": "/sample.html"
+    }
+  ]
+}

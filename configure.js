@@ -117,6 +117,110 @@ async function copyEnquiry() {
   }, 1400);
 }
 
+function safePdfName() {
+  const safeModel = modelName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  return `booking-enquiry-${safeModel || "cabinet"}.pdf`;
+}
+
+function downloadBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function downloadBrowserPdf() {
+  const jsPdf = window.jspdf?.jsPDF;
+
+  if (!jsPdf) {
+    throw new Error("PDF library is not ready. Please check your internet connection and try again.");
+  }
+
+  const order = orderPayload();
+  const doc = new jsPdf({ unit: "pt", format: "a4" });
+  const left = 48;
+  let y = 54;
+
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(184, 134, 53);
+  doc.setFontSize(11);
+  doc.text("CABINET STUDIO", left, y);
+
+  y += 34;
+  doc.setTextColor(17, 17, 17);
+  doc.setFontSize(28);
+  doc.text("Booking Enquiry Summary", left, y);
+
+  y += 28;
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(11);
+  doc.setTextColor(88, 88, 88);
+  doc.text("Customer configuration for review before technical site measurement and final quotation.", left, y);
+
+  y += 38;
+  const rows = [
+    ["Model", order.model],
+    ["Material", order.material],
+    ["Finishing", order.finishing],
+    ["Color", order.color],
+    ["Length", `${order.length} ft`],
+    ["Preferred site visit", order.siteVisit || "To confirm"],
+    ["Estimated from", order.estimate],
+  ];
+
+  rows.forEach(([label, value]) => {
+    doc.setDrawColor(220, 215, 205);
+    doc.roundedRect(left, y, 500, 42, 6, 6);
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(110, 110, 110);
+    doc.setFontSize(9);
+    doc.text(label, left + 14, y + 16);
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(17, 17, 17);
+    doc.setFontSize(13);
+    doc.text(String(value || "-"), left + 14, y + 32);
+    y += 52;
+  });
+
+  y += 12;
+  doc.setFillColor(7, 16, 29);
+  doc.roundedRect(left, y, 500, 56, 8, 8, "F");
+  doc.setFont("helvetica", "normal");
+  doc.setTextColor(230, 230, 230);
+  doc.setFontSize(11);
+  doc.text("Estimated starting price", left + 18, y + 34);
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(255, 255, 255);
+  doc.setFontSize(20);
+  doc.text(order.estimate, left + 360, y + 35);
+
+  y += 88;
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(17, 17, 17);
+  doc.setFontSize(15);
+  doc.text("Client Notes", left, y);
+
+  y += 18;
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(11);
+  doc.setTextColor(55, 55, 55);
+  const notes = doc.splitTextToSize(order.notes || "-", 500);
+  doc.text(notes, left, y);
+
+  y = 760;
+  doc.setDrawColor(220, 215, 205);
+  doc.line(left, y, 548, y);
+  doc.setFontSize(9);
+  doc.setTextColor(120, 120, 120);
+  doc.text("Final price is confirmed after technical site visit and measurement.", left, y + 18);
+
+  doc.save(safePdfName());
+}
+
 async function downloadOrderPdf() {
   const originalText = createEnquiry.textContent;
   createEnquiry.disabled = true;
@@ -135,25 +239,25 @@ async function downloadOrderPdf() {
     }
 
     const blob = await response.blob();
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    const safeModel = modelName.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-    link.href = url;
-    link.download = `booking-enquiry-${safeModel || "cabinet"}.pdf`;
-    document.body.append(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
+    downloadBlob(blob, safePdfName());
     createEnquiry.textContent = "PDF Downloaded";
     window.setTimeout(() => {
       createEnquiry.textContent = originalText;
     }, 1600);
   } catch (error) {
-    createEnquiry.textContent = "PDF Failed";
-    alert(error.message);
-    window.setTimeout(() => {
-      createEnquiry.textContent = originalText;
-    }, 1800);
+    try {
+      downloadBrowserPdf();
+      createEnquiry.textContent = "PDF Downloaded";
+      window.setTimeout(() => {
+        createEnquiry.textContent = originalText;
+      }, 1600);
+    } catch (browserError) {
+      createEnquiry.textContent = "PDF Failed";
+      alert(browserError.message || error.message);
+      window.setTimeout(() => {
+        createEnquiry.textContent = originalText;
+      }, 1800);
+    }
   } finally {
     createEnquiry.disabled = false;
   }

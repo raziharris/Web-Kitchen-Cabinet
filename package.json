@@ -1,0 +1,9 @@
+{
+  "name": "cabinet-booking-studio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "server": "node server.js"
+  }
+}

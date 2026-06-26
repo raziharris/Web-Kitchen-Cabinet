@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Configure Cabinet</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/configure.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand-mark">CABINET STUDIO</div>
+      <div class="header-actions">
+        <span>Kuala Lumpur Showroom</span>
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">Dark</button>
+      </div>
+    </header>
+
+    <main class="configure-shell">
+      <a id="backLink" class="back-link" href="/"><span aria-hidden="true">&larr;</span> Back to model selection</a>
+      <section class="configure-page">
+        <div class="configure-preview">
+          <img src="/assets/cabinet-showroom.png" alt="Cabinet configuration preview">
+          <div class="color-wash" aria-hidden="true"></div>
+        </div>
+
+        <section class="configure-panel">
+          <p class="label">Your selection</p>
+          <h1 id="configTitle">Configure Cabinet</h1>
+          <p id="configDescription">Choose material, finishing, color and preferred site visit date.</p>
+
+          <div class="drawer-options">
+            <label>
+              <span>Material</span>
+              <select id="materialSelect">
+                <option value="Melamine" data-rate="1">Melamine board</option>
+                <option value="Plywood" data-rate="1.18">Plywood</option>
+                <option value="Blockboard" data-rate="1.28">Blockboard</option>
+                <option value="Solid Wood" data-rate="1.55">Solid wood</option>
+              </select>
+            </label>
+            <label>
+              <span>Finishing</span>
+              <select id="finishSelect">
+                <option value="Matte laminate" data-rate="1">Matte laminate</option>
+                <option value="Gloss acrylic" data-rate="1.14">Gloss acrylic</option>
+                <option value="Fluted panel" data-rate="1.2">Fluted panel</option>
+                <option value="Veneer" data-rate="1.32">Natural veneer</option>
+              </select>
+            </label>
+            <label>
+              <span>Length (ft)</span>
+              <input id="lengthInput" type="number" min="4" max="30" value="10">
+            </label>
+            <label>
+              <span>Site visit date</span>
+              <input id="dateInput" type="date">
+            </label>
+          </div>
+
+          <div class="color-options" id="colorOptions"></div>
+
+          <div class="drawer-summary">
+            <span>Estimated from</span>
+            <strong id="estimateText">RM 6,200</strong>
+          </div>
+
+          <textarea id="notesInput" placeholder="Client notes for site visit"></textarea>
+
+          <div class="drawer-actions">
+            <button id="createEnquiry" type="button">Download Booking PDF</button>
+            <button id="copySummary" class="outline-button" type="button">Copy Summary</button>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

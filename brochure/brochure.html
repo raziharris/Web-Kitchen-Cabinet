@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cabinet Booking Studio Brochure</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 14mm;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: #111111;
+        background: #ffffff;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      .page {
+        min-height: 269mm;
+        padding: 6mm 0;
+        page-break-after: always;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+      }
+
+      .cover {
+        display: grid;
+        align-content: center;
+        gap: 18px;
+        min-height: 250mm;
+      }
+
+      .brand {
+        color: #c39342;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 620px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 50px;
+        line-height: 1.02;
+      }
+
+      h2 {
+        margin-bottom: 10px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 30px;
+      }
+
+      h3 {
+        margin-bottom: 8px;
+        font-size: 17px;
+      }
+
+      p {
+        color: #555555;
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .lead {
+        max-width: 620px;
+        color: #333333;
+        font-size: 17px;
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .summary-card,
+      .feature-card {
+        border: 1px solid #deded8;
+        border-radius: 8px;
+        padding: 14px;
+        background: #fbfaf7;
+      }
+
+      .summary-card strong,
+      .feature-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: #111111;
+        font-size: 13px;
+      }
+
+      .screen {
+        margin-top: 14px;
+        border: 1px solid #d7d1c6;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+      }
+
+      .screen img {
+        width: 100%;
+        display: block;
+      }
+
+      .caption {
+        padding: 10px 12px;
+        border-top: 1px solid #e6e0d6;
+        background: #fbfaf7;
+        color: #555555;
+        font-size: 12px;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 14px;
+      }
+
+      ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+        color: #555555;
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .footer-note {
+        margin-top: 14px;
+        padding-top: 10px;
+        border-top: 1px solid #deded8;
+        color: #777777;
+        font-size: 11px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page cover">
+      <div class="brand">Cabinet Studio</div>
+      <h1>Website Function Brochure</h1>
+      <p class="lead">A simple guide for clients and team members to understand the Cabinet Studio product selection, model browsing, and booking enquiry flow.</p>
+      <div class="summary-grid">
+        <div class="summary-card"><strong>1. Select Series</strong><p>Choose Kitchen Cabinet, Wardrobe, TV Cabinet, or Living Cabinet.</p></div>
+        <div class="summary-card"><strong>2. Browse Models</strong><p>Filter by layout, material, and budget before choosing a model.</p></div>
+        <div class="summary-card"><strong>3. Configure</strong><p>Select material, finishing, color, length, and site visit date.</p></div>
+        <div class="summary-card"><strong>4. Enquire</strong><p>Copy a WhatsApp-ready booking message for follow-up.</p></div>
+      </div>
+    </section>
+
+    <section class="page">
+      <h2>Main Page</h2>
+      <p>The main page introduces the product series. Users start here by choosing the cabinet category that matches their project.</p>
+      <div class="screen">
+        <img src="screenshots/01-home.png" alt="Main product series page screenshot">
+        <div class="caption">Product series grid with navigation into each configuration path.</div>
+      </div>
+      <div class="two-col">
+        <div class="feature-card">
+          <strong>Main functions</strong>
+          <ul>
+            <li>Displays available product categories.</li>
+            <li>Shows short descriptions, typical sizes, material options, and starting price.</li>
+            <li>Each product card links to the model overview page.</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <strong>Client benefit</strong>
+          <ul>
+            <li>Easy first-step selection.</li>
+            <li>No payment required online.</li>
+            <li>Clear path toward booking a site visit.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <h2>Product Overview Page</h2>
+      <p>After a product series is selected, the user sees model options with filters and technical details.</p>
+      <div class="screen">
+        <img src="screenshots/02-product-overview.png" alt="Product overview page screenshot">
+        <div class="caption">Model browsing page with filters, search, model cards, and configure actions.</div>
+      </div>
+      <div class="two-col">
+        <div class="feature-card">
+          <strong>Main functions</strong>
+          <ul>
+            <li>Search available models.</li>
+            <li>Filter by layout, material, and budget.</li>
+            <li>View model starting price, size, lead time, and storage details.</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <strong>User action</strong>
+          <ul>
+            <li>Click Technical Data for more detail.</li>
+            <li>Click Configure This Model to continue.</li>
+            <li>Return to product series selection using the back button.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <h2>Configure Page</h2>
+      <p>This page is where users personalize the selected model before creating a booking enquiry for a technical site visit.</p>
+      <div class="screen">
+        <img src="screenshots/03-configure.png" alt="Configure page screenshot">
+        <div class="caption">Full-page configurator for material, finishing, color, size, date, and notes.</div>
+      </div>
+      <div class="two-col">
+        <div class="feature-card">
+          <strong>Main functions</strong>
+          <ul>
+            <li>Select material and finishing.</li>
+            <li>Choose color swatches.</li>
+            <li>Enter cabinet length and preferred site visit date.</li>
+            <li>Write client notes.</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <strong>Output</strong>
+          <ul>
+            <li>Shows estimated starting price.</li>
+            <li>Creates a WhatsApp-ready enquiry message.</li>
+            <li>Final quotation and payment happen offline after site measurement.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-note">Generated locally from the current Cabinet Booking Studio localhost prototype.</p>
+    </section>
+  </body>
+</html>

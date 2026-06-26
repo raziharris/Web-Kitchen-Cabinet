@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cabinet Series Overview</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/product.js" defer></script>
+  </head>
+  <body class="product-page">
+    <header class="product-header">
+      <a class="studio-logo" href="/">
+        <span class="logo-icon" aria-hidden="true"></span>
+        <span>
+          <strong>CABINET STUDIO</strong>
+          <small>DESIGN YOUR PERFECT SPACE</small>
+        </span>
+      </a>
+      <nav class="product-nav" aria-label="Primary">
+        <a class="active" href="/" aria-current="page">Products</a>
+        <a href="/inspiration">Inspiration</a>
+        <a href="/materials">Materials</a>
+        <a href="/about-us">About Us</a>
+        <a href="/resources">Resources</a>
+      </nav>
+      <div class="product-actions">
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode">Dark</button>
+        <a class="quote-button" href="/configure/kitchen/Kitchen%20Cabinet">Get a Quote <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </header>
+
+    <main>
+      <section class="product-hero">
+        <div class="hero-copy">
+          <a class="back-link" href="/"><span aria-hidden="true">&larr;</span> Back to product series selection</a>
+          <h1 id="overviewTitle">Which cabinet would you like to configure?</h1>
+          <p id="overviewSubtitle">Design your dream cabinet with your style, space and budget.</p>
+          <div class="trust-row" aria-label="Benefits">
+            <div><span aria-hidden="true">▦</span><strong>Customise<br>Your Style</strong></div>
+            <div><span aria-hidden="true">⌁</span><strong>Tailored to<br>Your Space</strong></div>
+            <div><span aria-hidden="true">◇</span><strong>Quality You<br>Can Trust</strong></div>
+          </div>
+        </div>
+        <div class="hero-image" aria-hidden="true">
+          <img src="/assets/cabinet-showroom.png" alt="">
+        </div>
+      </section>
+
+      <section class="model-browser premium-browser" aria-label="Product model browser">
+        <aside class="filters" aria-label="Filters">
+          <div class="filter-head">
+            <h2><span aria-hidden="true">☷</span> Refine Your Selection</h2>
+          </div>
+
+          <section class="filter-group">
+            <div class="filter-title"><h3>Layout</h3><button class="text-button" type="button" data-reset-group="layout">Reset</button></div>
+            <div id="layoutFilters"></div>
+          </section>
+
+          <section class="filter-group">
+            <h3>Material</h3>
+            <div id="materialFilters"></div>
+          </section>
+
+          <section class="filter-group">
+            <h3>Budget to</h3>
+            <label><input type="radio" name="budget" value="all" checked> All</label>
+            <label><input type="radio" name="budget" value="5000"> RM 5,000</label>
+            <label><input type="radio" name="budget" value="8000"> RM 8,000</label>
+            <label><input type="radio" name="budget" value="12000"> RM 12,000</label>
+          </section>
+
+          <button id="resetFilters" class="clear-filters" type="button">Clear All Filters</button>
+        </aside>
+
+        <section class="models-area">
+          <div class="toolbar">
+            <button id="filterToggle" class="outline-button" type="button">Filter</button>
+            <div class="toolbar-search">
+              <input id="mobileSearchInput" type="search" placeholder="Search models">
+            </div>
+            <span id="resultCount">0 models</span>
+            <div class="view-toggle" aria-label="View mode">
+              <span>View as</span>
+              <button class="active" type="button" aria-label="Grid view">▦</button>
+              <button type="button" aria-label="List view">☰</button>
+            </div>
+          </div>
+
+          <div id="modelSections"></div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

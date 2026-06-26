@@ -1,0 +1,11 @@
+{
+  "watch": [
+    "server.js",
+    ".nodemon-restart"
+  ],
+  "ext": "js,json",
+  "ignore": [
+    "node_modules",
+    ".chrome-profile"
+  ]
+}
